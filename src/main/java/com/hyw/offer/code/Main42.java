@@ -5,7 +5,7 @@ package com.hyw.offer.code;
  * DateTime：2020/2/7 17:24
  * Description：TODO
  */
-public class Mian42 {
+public class Main42 {
 
     public int findGreatestSumOfSubArray(int[] nums) {
         if (nums == null ||nums.length < 0) {
