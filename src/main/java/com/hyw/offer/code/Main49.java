@@ -10,6 +10,7 @@ public class Main49 {
     public static void main(String[] args) {
         Main49 main49 = new Main49();
         System.out.println(main49.getUglyNumberSolution(10));
+        System.out.println("aaa");
     }
 
     public int getUglyNumberSolution(int n) {

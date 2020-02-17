@@ -1,11 +1,9 @@
 package com.hyw;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
+import javafx.scene.layout.Priority;
+
+import java.util.*;
+import java.util.concurrent.*;
 
 /**
  * Project：study_996     @author 源伟
@@ -14,26 +12,17 @@ import java.util.concurrent.FutureTask;
  */
 public class TestMain {
 
-
-
     public static void main(String[] args) {
-        //主线程中赋值
-        ThreadLocal<String> stringThreadLocal = new ThreadLocal<>();
+        Thread thread = Thread.currentThread();
 
-        InheritableThreadLocal<String> stringInheritableThreadLocal = new InheritableThreadLocal<>();
-
-        stringThreadLocal.set("ThreadLocal string");
-        stringInheritableThreadLocal.set("InheritableThreadLocal string");
-
-        //子线程中分别打印两个变量的信息
-        new Thread(() -> {
-            System.out.println(
-                    Thread.currentThread().getName() + " ThreadLocal value ：" + stringThreadLocal.get());
-            System.out.println(Thread.currentThread().getName() + " InheritableThreadLocal value ："
-                    + stringInheritableThreadLocal.get());
-        }).start();
-
-
+        while (thread.isInterrupted()) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                thread.interrupt();
+                e.printStackTrace();
+            }
+        }
     }
 
 }
