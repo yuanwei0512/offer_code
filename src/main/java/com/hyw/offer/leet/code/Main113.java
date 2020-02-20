@@ -1,5 +1,6 @@
 package com.hyw.offer.leet.code;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,6 +11,35 @@ import java.util.List;
 public class Main113 {
 
     public List<List<Integer>> pathSum(TreeNode root, int sum) {
+        List<List<Integer>> resultList = new ArrayList<>();
+
+        if (root == null) {
+            return resultList;
+        }
+        if (root.left == null && root.right == null) {
+            if (root.val == sum) {
+                List<Integer> pathList = new ArrayList<>();
+                pathList.add(root.val);
+                resultList.add(pathList);
+
+            }
+            return resultList;
+        }
+        if (root.left != null) {
+            List<List<Integer>> lists = pathSum(root.left, sum - root.val);
+            for (List<Integer> list : lists) {
+                list.add(0, root.val);
+                resultList.add(list);
+            }
+        }
+        if (root.right != null) {
+            List<List<Integer>> lists = pathSum(root.right, sum - root.val);
+            for (List<Integer> list : lists) {
+                list.add(0, root.val);
+                resultList.add(list);
+            }
+        }
+        return resultList;
 
     }
 
