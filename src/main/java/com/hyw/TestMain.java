@@ -12,17 +12,20 @@ import java.util.concurrent.*;
  */
 public class TestMain {
 
-    public static void main(String[] args) {
-        Thread thread = Thread.currentThread();
+    private long fib(int n) {
+        long[] nums = new long[n + 1];
 
-        while (thread.isInterrupted()) {
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                thread.interrupt();
-                e.printStackTrace();
-            }
+        nums[0] = 1;
+        nums[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            nums[i] = nums[i - 1] + nums[i - 2];
         }
+        return nums[n];
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new TestMain().fib(50));
     }
 
 }
