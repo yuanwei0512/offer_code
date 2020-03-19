@@ -14,7 +14,7 @@ public class Main79 {
 
 
     private boolean validateDirction(int x, int y) {
-        if (x >= 0 && x <= maxX && y >= 0 && y <= maxY) {
+        if (x >= 0 && x < maxX && y >= 0 && y < maxY) {
             return true;
         }
         return false;
@@ -44,8 +44,8 @@ public class Main79 {
 
 
     public boolean exist(char[][] board, String word) {
-        this.maxX = board.length - 1;
-        this.maxY = board[0].length - 1;
+        this.maxX = board.length ;
+        this.maxY = board[0].length ;
         flag = new boolean[board.length][board[0].length];
         for (int i = 0; i < maxX; i++) {
             for (int j = 0; j < maxY; j++) {

@@ -7,4 +7,32 @@ package com.hyw.offer.leet.code;
  */
 public class Main392 {
 
+    public boolean isSubsequence(String s, String t) {
+        if (s == null || s.trim().length() == 0 ) {
+            return true;
+        }
+        if (t == null || t.trim().length() == 0) {
+            return false;
+        }
+        int sIndex = 0;
+        int tIndex = 0;
+
+        while (tIndex < t.length()) {
+            if (s.charAt(sIndex) == t.charAt(tIndex)) {
+                sIndex++;
+                if (sIndex == s.length()) {
+                    return true;
+                }
+            }
+            tIndex++;
+
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Main392 main392 = new Main392();
+        System.out.println(main392.isSubsequence("abc", "ahgdcb"));
+    }
+
 }

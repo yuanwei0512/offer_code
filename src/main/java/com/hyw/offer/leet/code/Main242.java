@@ -1,5 +1,6 @@
 package com.hyw.offer.leet.code;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -11,39 +12,19 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class Main242 {
 
-    public boolean validAnagram(String a, String b) {
+    public boolean validAnagram(String s, String t) {
 
-        String[] splitA = a.split("");
-        Map<String, Integer> mapA = new HashMap<>(splitA.length);
+        char[] chars = s.toCharArray();
+        char[] chars1 = t.toCharArray();
+        Arrays.sort(chars);
+        Arrays.sort(chars1);
+        return new String(chars).equals(new String(chars1));
 
-        for (String s : splitA) {
-            mapA.merge(s, 0, Integer::sum);
-        }
-
-        String[] splitB = a.split("");
-        Map<String, Integer> mapB = new HashMap<>(splitB.length);
-        for (String s : splitB) {
-            mapB.merge(s, 0, Integer::sum);
-        }
-
-        if (mapA.keySet().size() != mapB.keySet().size()) {
-            return false;
-        }
-
-        AtomicBoolean result = new AtomicBoolean(true);
-        mapA.forEach((k, v) -> {
-            if (mapB.containsKey(k)) {
-                if (!mapB.get(k).equals(v)) {
-                    result.set(false);
-                    return;
-                }
-            }
-        });
-        return result.get();
     }
 
     public static void main(String[] args) {
-
+        Main242 main242 = new Main242();
+        System.out.println(main242.validAnagram("anagram", "nagaram"));
     }
 
 }
