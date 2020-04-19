@@ -7,4 +7,14 @@ package com.hyw.offer.leet.code;
  */
 public class Main191 {
 
+    public int hammingWeight(int n) {
+        int size = 0;
+        while (n != 0) {
+            size++;
+            n = n & (n - 1);
+        }
+        return size;
+    }
+
+
 }

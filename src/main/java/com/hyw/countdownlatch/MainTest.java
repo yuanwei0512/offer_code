@@ -1,7 +1,7 @@
-package com.hyw.newstudy;
+package com.hyw.countdownlatch;
 
-import com.hyw.newstudy.station.BeijinStationCenter;
-import com.hyw.newstudy.station.TianjtationCenter;
+import com.hyw.countdownlatch.station.BeijinStationCenter;
+import com.hyw.countdownlatch.station.TianjtationCenter;
 
 import java.util.Arrays;
 

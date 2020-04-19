@@ -16,25 +16,21 @@ public class Main328 {
     }
 
     public ListNode oddEvenList(ListNode head) {
-        ListNode odd_Node = new ListNode(0);
-        ListNode odd = odd_Node;
-        ListNode even_Node = new ListNode(0);
-        ListNode even = even_Node;
-
-        while (head != null) {
-            if (head.val % 2 == 0) {
-                even.next = head;
-                even = even.next;
-            } else {
-                odd.next = head;
-                odd = odd.next;
-            }
-            head = head.next;
+        if (head == null) {
+            return null;
         }
-        even.next = null;
-        odd.next = even_Node.next;
-        return odd_Node.next;
+        ListNode odd = head;
+        ListNode even = head.next;
+        ListNode evenHead = even;
 
+        while (even != null && even.next != null) {
+            odd.next = even.next;
+            odd = odd.next;
+            even.next = odd.next;
+            even = even.next;
+        }
+        odd.next = evenHead;
+        return head;
     }
 
     /**

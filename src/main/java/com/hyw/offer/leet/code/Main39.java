@@ -1,6 +1,9 @@
 package com.hyw.offer.leet.code;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Project：study_996     @author 源伟
@@ -13,36 +16,36 @@ public class Main39 {
     private List<List<Integer>> resultList = new ArrayList<>();
 
 
-    public void getSegment(int[] candidates, int target, int start) {
-
-        if (target == 0) {
-            resultList.add(new ArrayList<>(segment));
-        } else if (target < 0){
-            return;
-        }
-        for (int i = start; i < candidates.length && (target -candidates[i] >= 0); i++) {
-
-            segment.add(candidates[i]);
-            getSegment(candidates, target - candidates[i], i);
-            segment.removeLast();
-        }
-
+    public static void main(String[] args) {
+        Main39 main39 = new Main39();
+        int[] nums = {8, 7, 4, 3};
+        System.out.println(main39.combinationSum(nums, 11));
     }
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         if (candidates == null || candidates.length == 0) {
             return Collections.emptyList();
         }
-        Arrays.sort(candidates);
         getSegment(candidates, target, 0);
         return resultList;
     }
 
-    public static void main(String[] args) {
-        Main39 main39 = new Main39();
-        int[] nums = {2,3,6,7};
-        System.out.println(main39.combinationSum(nums, 7));
-        StringBuilder s = new StringBuilder("123");
+    private void getSegment(int[] candidates, int target, int start) {
+
+        if (target == 0) {
+            resultList.add(new ArrayList<>(segment));
+        } else if (target < 0){
+            return;
+        }
+        for (int i = start; i < candidates.length; i++) {
+            if (target - candidates[i] < 0) {
+                continue;
+            }
+            segment.add(candidates[i]);
+            getSegment(candidates, target - candidates[i], i);
+            segment.removeLast();
+        }
+
     }
 
 }

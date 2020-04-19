@@ -19,20 +19,20 @@ public class Main454 {
         System.out.println(main454.fourSumCount(a, b, c, d));
     }
 
-    public int fourSumCount(int[] a, int[] b, int[] c, int[] d) {
-        Map<Integer, Integer> abMap = new HashMap<>(a.length * b.length);
-        Map<Integer, Integer> cdMap = new HashMap<>(c.length * d.length);
+    public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {
+        Map<Integer, Integer> abMap = new HashMap<>(A.length * B.length);
+        Map<Integer, Integer> cdMap = new HashMap<>(C.length * D.length);
 
         int result = 0;
 
-        for (int i : a) {
-            for (int i1 : b) {
+        for (int i : A) {
+            for (int i1 : B) {
                 abMap.merge(i + i1, 1, Integer::sum);
             }
         }
 
-        for (int i : c) {
-            for (int i1 : d) {
+        for (int i : C) {
+            for (int i1 : D) {
                 cdMap.merge(0 - (i + i1), 1, Integer::sum);
             }
         }

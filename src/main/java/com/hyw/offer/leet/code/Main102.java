@@ -7,4 +7,20 @@ package com.hyw.offer.leet.code;
  */
 public class Main102 {
 
+    /*public List<List<Integer>> levelOrder(TreeNode root) {
+
+        //Main105
+
+    }*/
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
+    }
+
 }

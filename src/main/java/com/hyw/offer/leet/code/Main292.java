@@ -7,4 +7,8 @@ package com.hyw.offer.leet.code;
  */
 public class Main292 {
 
+    public boolean canWinNim(int n) {
+        return !(n % 4 == 0);
+    }
+
 }

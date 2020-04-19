@@ -1,6 +1,4 @@
-package com.hyw.newstudy.station;
-
-import java.util.concurrent.CountDownLatch;
+package com.hyw.countdownlatch.station;
 
 /**
  * Project：study_996     @author 源伟

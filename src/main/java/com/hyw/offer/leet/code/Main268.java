@@ -7,4 +7,12 @@ package com.hyw.offer.leet.code;
  */
 public class Main268 {
 
+    public int missingNumber(int[] nums) {
+        int miss = nums.length;
+        for (int i = 0; i < nums.length; i++) {
+            miss ^= i ^ nums[i];
+        }
+        return miss;
+    }
+
 }

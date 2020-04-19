@@ -7,4 +7,20 @@ package com.hyw.offer.leet.code;
  */
 public class Main171 {
 
+
+    public static void main(String[] args) {
+        Main171 main171 = new Main171();
+        System.out.println(main171.titleToNumber("ZY"));
+    }
+
+    public int titleToNumber(String s) {
+        int result = 0;
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            int cur = chars[i] - 'A' + 1;
+            result = result * 26 + cur;
+        }
+        return result;
+    }
+
 }

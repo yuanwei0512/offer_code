@@ -1,4 +1,4 @@
-package com.design.u057.D;
+package com.hyw.eventbus;
 
 import com.google.common.annotations.Beta;
 
@@ -15,4 +15,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Beta
 public @interface Subscribe {
+
 }

@@ -1,8 +1,5 @@
 package com.hyw.offer.leet.code;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-
 /**
  * Project：study_996     @author 源伟
  * DateTime：2020/2/27 15:13
@@ -20,6 +17,9 @@ public class Main198 {
     }
 
     public int rob(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
         int n = nums.length;
         int[] memory = new int[n];
         memory[n - 1] = nums[n - 1];

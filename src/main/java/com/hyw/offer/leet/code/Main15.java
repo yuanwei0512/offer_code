@@ -1,6 +1,8 @@
 package com.hyw.offer.leet.code;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Project：study_996     @author 源伟
@@ -16,44 +18,38 @@ public class Main15 {
     }
 
     public List<List<Integer>> threeSum(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return Collections.emptyList();
-        }
 
-        List<List<Integer>> result = new ArrayList<>();
-
+        List<List<Integer>> resultList = new ArrayList<>();
+        int n = nums.length;
+        int sum;
         Arrays.sort(nums);
-        for (int i = 0; i < nums.length - 2; i++) {
-            if (i == 0 || nums[i] != nums[i - 1]) {
-                int sum = 0 - nums[i];
-                int l = i + 1;
-                int r = nums.length - 1;
-                while (l < r) {
-                    if (nums[l] + nums[r] == sum) {
-                        result.add(Arrays.asList(nums[i], nums[l], nums[r]));
-                        while (l < r && nums[l] == nums[l + 1]) {
-                            l++;
-                        }
-                        while (l < r && nums[r] == nums[r - 1]) {
-                            r--;
-                        }
-                        l++;
-                        r--;
-                    } else if (nums[l] + nums[r] > sum) {
-                        while (l < r && nums[r] == nums[r - 1]) {
-                            r--;
-                        }
-                        r--;
-                    } else {
-                        while (l < r && nums[l] == nums[l + 1]) {
-                            l++;
-                        }
+        for (int i = 0; i < n - 2; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            sum = 0 - nums[i];
+            int l = i + 1;
+            int r = n - 1;
+            while (l < r) {
+                if (nums[l] + nums[r] == sum) {
+                    resultList.add(Arrays.asList(nums[i], nums[l], nums[r]));
+                    while (l < r && nums[l] == nums[l + 1]) {
                         l++;
                     }
+                    while (l < r && nums[r] == nums[r - 1]) {
+                        r--;
+                    }
+                    l++;
+                    r--;
+                } else if (nums[l] + nums[r] < sum) {
+                    l++;
+                } else {
+                    r--;
                 }
             }
         }
-        return result;
+        return resultList;
+
     }
 
 }

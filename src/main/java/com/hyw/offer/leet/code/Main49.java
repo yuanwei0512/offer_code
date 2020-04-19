@@ -1,6 +1,7 @@
 package com.hyw.offer.leet.code;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Project：study_996     @author 源伟
@@ -16,22 +17,26 @@ public class Main49 {
     }
 
     public List<List<String>> groupAnagrams(String[] strs) {
-
-        Map<String, List<String>> hashMap = new HashMap<>(strs.length);
+        if (strs == null || strs.length == 0) {
+            return Collections.emptyList();
+        }
+        Map<String, List<String>> map = new HashMap<>();
 
         for (String str : strs) {
             char[] chars = str.toCharArray();
             Arrays.sort(chars);
             String s = String.valueOf(chars);
-
-            if (!hashMap.containsKey(s)) {
-                hashMap.put(s, new ArrayList<>());
+            List<String> strings = map.get(s);
+            if (strings == null) {
+                ArrayList<String> value = new ArrayList<>();
+                value.add(str);
+                map.put(s, value);
+            } else {
+                strings.add(str);
             }
-            hashMap.get(s).add(str);
-
-
         }
-        return new ArrayList<>(hashMap.values());
+        return map.values().stream().collect(Collectors.toList());
+
 
     }
 
