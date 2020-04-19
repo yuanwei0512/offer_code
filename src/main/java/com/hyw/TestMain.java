@@ -13,12 +13,12 @@ public class TestMain {
     }
 
     public void methodB() {
-
-
         try {
+
             methodA();
+
         } catch (Exception e) {
-            System.out.println("method b ");
+            System.out.println("methoddddd b ");
         }
     }
 
