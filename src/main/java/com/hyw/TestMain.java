@@ -13,6 +13,8 @@ public class TestMain {
     }
 
     public void methodB() {
+
+
         try {
             methodA();
         } catch (Exception e) {
