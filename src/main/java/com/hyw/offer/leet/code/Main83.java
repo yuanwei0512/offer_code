@@ -9,31 +9,37 @@ public class Main83 {
 
     public static void main(String[] args) {
         Main83 main83 = new Main83();
-        ListNode listNode = new ListNode(1);
-        ListNode head = main83.createHead(5);
-        listNode.next = head;
-        head = listNode;
-        main83.printNode(head);
-        head = main83.deleteDuplicates(head);
-        main83.printNode(head);
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = main83.createHead(2);
+        ListNode node3 = main83.createHead(2);
+        ListNode node4 = main83.createHead(3);
+        ListNode node5 = main83.createHead(3);
+        node1.next = node2;
+        node1.next = node3;
+        node3.next = node4;
+        node4.next = node5;
+        main83.deleteDuplicates(node1);
     }
 
 
     public ListNode deleteDuplicates(ListNode head) {
-        while (head.next != null && head.val ==head.next.val) {
-            head = head.next;
+        if (head == null) {
+            return null;
         }
-        ListNode pre = head;
-        ListNode next = pre.next;
-        while (next.next != null) {
-            while (next.val == next.next.val) {
-                next = next.next;
+        ListNode sentry = new ListNode(head.val);
+        ListNode tail = sentry;
+        ListNode cur = head.next;
+        while (cur != null) {
+            if (cur.val != tail.val) {
+                tail.next = cur;
+                tail = tail.next;
+
             }
-            pre.next = next;
-            pre = next;
-            next = next.next;
+            cur = cur.next;
         }
-        return head;
+        tail.next = null;
+        return sentry;
+
     }
 
     /**

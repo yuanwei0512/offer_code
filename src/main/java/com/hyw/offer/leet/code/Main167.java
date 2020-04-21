@@ -17,24 +17,22 @@ public class Main167 {
         System.out.println(main167.twoSum(nums, 13));
     }
 
-    public List twoSum(int[] nums, int target) {
-        if (null == nums || nums.length == 0) {
-            return Collections.emptyList();
-        }
+    public int[] twoSum(int[] numbers, int target) {
         int l = 0;
-        int r = nums.length - 1;
-
+        int r = numbers.length - 1;
+        int[] result = new int[2];
         while (l < r) {
-            int sum = nums[l] + nums[r];
-            if (sum == target) {
-                return Arrays.asList(l + 1, r + 1);
-            } else if (sum < target) {
+            if (numbers[l] + numbers[r] == target) {
+                result[0] = l + 1;
+                result[1] = r + 1;
+                break;
+            } else if (numbers[l] + numbers[r] < target) {
                 l++;
             } else {
                 r--;
             }
         }
-        return Collections.emptyList();
+        return result;
     }
 
 }

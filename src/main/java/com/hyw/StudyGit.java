@@ -1,5 +1,6 @@
 package com.hyw;
 
+import java.io.*;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -21,6 +22,20 @@ public class StudyGit {
             e.printStackTrace();
         } finally {
             lock.unlock();
+        }
+        try (BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream("asdf"));
+             BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream("asdf"))) {
+
+            byte[] buffer = new byte[8192];
+            int len = 0;
+            while ((len = bufferedInputStream.read(buffer)) != -1) {
+                bufferedOutputStream.write(buffer, 0, len);
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
